@@ -1,0 +1,16 @@
+#elimina il messaggio iniziale di screen
+startup_message off
+
+#setta la barra informativa in basso
+hardstatus alwayslastline
+
+#layout barra informativa, copiato dalla archwiki, modificato per sistemare il formato della data
+#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d-%m %{W}%c %{g}]'
+
+#Per abilitare i 256 colori di urxvt
+term screen-256color
+
+#Encoding utf8
+defutf8 on
+
