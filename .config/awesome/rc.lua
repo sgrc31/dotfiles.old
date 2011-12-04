@@ -1,3 +1,10 @@
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- rc.lua | Awesome WM v. 3.4.11
+-- by Simone Guercio
+-- last edited 04/12/2011
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+
 -- Standard awesome library
 require("awful")
 require("awful.autofocus")
@@ -81,18 +88,19 @@ mytextclock = awful.widget.textclock({ align = "right" })
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
--- Creo textbox di prova
-provawidget = widget({ type = "textbox" })
-provawidget.text = "prova sta ficata"
-
 -- Uptime widget
 uptimewidget = widget({ type = "textbox" })
 vicious.register(uptimewidget, vicious.widgets.uptime, "Uptime: $1d $2h $3m", 12)
 
 -- CPU widget
 cpuwidget = widget({ type = "textbox" })
-vicious.register(cpuwidget, vicious.widgets.cpu, "CPU: $1", 3)
+cpuwidget.width = 110
+vicious.register(cpuwidget, vicious.widgets.cpu, "CPU: $2% $3% $4% $5%", 3)
 vicious.cache(vicious.widgets.cpu)
+
+-- CPU1 Freq widget
+freqwidget1 = widget({ type = "textbox" })
+vicious.register(freqwidget1, vicious.widgets.cpufreq, "@ $2", 11, "cpu0")
 
 -- Temp widget
 tempwidget = widget({ type = "textbox" })
@@ -100,26 +108,54 @@ vicious.register(tempwidget, vicious.widgets.thermal, "<span color='#08A3A3'>tem
 
 -- Mem widget
 memwidget = widget({ type = "textbox" })
-vicious.register(memwidget, vicious.widgets.mem, "ram: $2/$3", 5)
+vicious.cache(vicious.widgets.mem)
+vicious.register(memwidget, vicious.widgets.mem, "ram: $2", 7)
+
+-- Mem bar
+membar = awful.widget.progressbar()
+membar:set_width(70)
+membar:set_height(6)
+membar:set_vertical(false)
+membar:set_ticks(false)
+membar:set_background_color('#FFFFFF')
+membar:set_color('#000000')
+vicious.register(membar, vicious.widgets.mem, "$1", 13)
+awful.widget.layout.margins[membar.widget] = { top = 5 }
+
 
 -- FS1 widget
 fswidget1 = widget({ type = "textbox" })
 vicious.register(fswidget1, vicious.widgets.fs, "/ ${/ used_gb} ${/ size_gb}", 97)
 
+-- FS2 widget
+fswidget2 = widget({ type = "textbox" })
+vicious.register(fswidget2, vicious.widgets.fs, "data ${/mnt/data used_gb} ${/mnt/data size_gb}", 97)
+
 -- FS1 bar
 fsbar1 = awful.widget.progressbar()
-fsbar1:set_width(50)
+fsbar1:set_width(70)
 fsbar1:set_height(6)
 fsbar1:set_vertical(false)
 fsbar1:set_ticks(false)
 fsbar1:set_background_color('#FFFFFF')
 fsbar1:set_color('#000000')
-vicious.register(fsbar1, vicious.widgets.cpu, "$1", 3)
+vicious.register(fsbar1, vicious.widgets.fs, "${/ used_p}", 31)
 awful.widget.layout.margins[fsbar1.widget] = { top = 5 }
+
+-- FS2 bar
+fsbar2 = awful.widget.progressbar()
+fsbar2:set_width(70)
+fsbar2:set_height(7)
+fsbar2:set_vertical(false)
+fsbar2:set_ticks(false)
+fsbar2:set_background_color('#FFFFFF')
+fsbar2:set_color('#000000')
+vicious.register(fsbar2, vicious.widgets.fs, "${/mnt/data used_p}", 67)
+awful.widget.layout.margins[fsbar2.widget] = { top = 4 }
 
 -- WiFi widget
 wifiwidget = widget({ type = "textbox" })
-vicious.register(wifiwidget, vicious.widgets.wifi, "wifi: ${ssid} ${link}% ${rate} ${sign}", 7, "wlan0")
+vicious.register(wifiwidget, vicious.widgets.wifi, "wifi: ${ssid} ${link}%", 7, "wlan0")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -203,12 +239,15 @@ for s = 1, screen.count() do
     }
     -- Creo seconda statusbar
     infobar = awful.wibox({ position = "bottom", height = 16, screen = s })
-    infobar.widgets = { provawidget,
-    			uptimewidget, 
+    infobar.widgets = { uptimewidget, 
 			cpuwidget,
+			freqwidget1,
 			memwidget,
+			membar.widget,
 			tempwidget,
 			wifiwidget,
+			fswidget2,
+			fsbar2.widget,
 			fswidget1,
 			fsbar1.widget,
 			layout = awful.widget.layout.horizontal.leftright 
