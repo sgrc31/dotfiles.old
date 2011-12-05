@@ -100,7 +100,7 @@ vicious.register(uptimewidget, vicious.widgets.uptime, "<span color='#FF8C00'>Up
 
 -- CPU widget
 cpuwidget = widget({ type = "textbox" })
-cpuwidget.width = 110
+cpuwidget.width = 120
 cpuwidget.align = "right"
 vicious.register(cpuwidget, vicious.widgets.cpu, "<span color='#FF8C00'>CPU</span>  $2% $3% $4% $5%", 3)
 vicious.cache(vicious.widgets.cpu)
