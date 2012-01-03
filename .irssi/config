@@ -288,7 +288,12 @@ statusbar = {
   };
 };
 settings = {
-  core = { real_name = "John Doe"; user_name = "sigur"; nick = "sigur"; };
+  core = {
+    real_name = "John Doe";
+    user_name = "sigur";
+    nick = "sigur";
+    timestamp_format = "%H:%M";
+  };
   "fe-text" = { actlist_sort = "refnum"; };
   "perl/core/scripts" = {
     nicklist_automode = "screen";
@@ -310,7 +315,8 @@ hilights = (
 );
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-  2 = {
+  2 = { name = "twitter"; };
+  3 = {
     items = (
       {
         type = "CHANNEL";
@@ -320,7 +326,7 @@ windows = {
       }
     );
   };
-  3 = {
+  4 = {
     items = (
       {
         type = "CHANNEL";
@@ -330,7 +336,7 @@ windows = {
       }
     );
   };
-  4 = {
+  5 = {
     items = (
       {
         type = "CHANNEL";
@@ -340,9 +346,9 @@ windows = {
       }
     );
   };
-  5 = { name = "hilight"; sticky = "yes"; };
+  6 = { name = "hilight"; sticky = "yes"; };
 };
 mainwindows = {
-  1 = { first_line = "6"; lines = "30"; };
-  5 = { first_line = "1"; lines = "5"; };
+  1 = { first_line = "7"; lines = "38"; };
+  6 = { first_line = "1"; lines = "6"; };
 };
