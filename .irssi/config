@@ -301,6 +301,7 @@ settings = {
     usercount_show_zero = "no";
     awl_display_key = "$N|$H$C$S";
     awl_display_key_active = "$N*|$H$C$S";
+    twirssi_force_first = "yes";
   };
   "irc/core" = { alternate_nick = "sigur_"; };
 };
