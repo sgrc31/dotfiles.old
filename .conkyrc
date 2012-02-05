@@ -1,0 +1,60 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+alignment top_middle
+background no
+border_width 0
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont DejaVu Sans Mono:size=8
+gap_x 155
+gap_y 10
+#minimum_size 5 5
+net_avg_samples 2
+no_buffers yes
+out_to_x yes
+out_to_console no
+out_to_ncurses no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_class Conky
+own_window_type dock
+stippled_borders 0
+update_interval 3.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+TEXT
+Up: $uptime_short ${color #FFFF00}Kernel: $kernel | HDtemp: ${hddtemp}°C | temp: ${execpi 8 sensors | grep 'Core 0' | cut -c 16-22} MEM: ${membar 5,10} CPU: ${cpu 0}% @ $freq_g GHz | ${fs_free /}/${fs_size /} ${fs_bar 5,10 /} | data: ${fs_free /mnt/data}/${fs_size /mnt/data} ${fs_bar 5,10 /mnt/data} | ${if_up wlan0}wifi: ${wireless_essid wlan0} ${wireless_link_qual wlan0}% $endif | ${time %a %d %H:%M}
