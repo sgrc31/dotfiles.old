@@ -1,7 +1,7 @@
 URxvt.background:	#000000
 URxvt.foreground:	#1ab916
 URxvt.scrollBar:	false
-URxvt.font:		xft:Bitstream Vera Sans Mono:pixelsize=13
+URxvt.font:		xft:DejaVu Sans Mono:pixelsize=13
 URxvt.visualBell:	true
 URxvt.urgentOnBell: 	true
 #Link clickabili
